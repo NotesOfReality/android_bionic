@@ -2005,14 +2005,6 @@ cc_object {
     srcs: ["arch-common/bionic/crtbegin.c"],
 
     arch: {
-        arm64: {
-            srcs: [
-                "arch-arm64/bionic/crtbegin.c",
-            ],
-            exclude_srcs: [
-                "arch-common/bionic/crtbegin.c",
-            ],
-        },
         mips: {
             srcs: [
                 "arch-mips/bionic/crtbegin.c",
@@ -2052,14 +2044,6 @@ cc_object {
     srcs: ["arch-common/bionic/crtbegin.c"],
 
     arch: {
-        arm64: {
-            srcs: [
-                "arch-arm64/bionic/crtbegin.c",
-            ],
-            exclude_srcs: [
-                "arch-common/bionic/crtbegin.c",
-            ],
-        },
         mips: {
             srcs: [
                 "arch-mips/bionic/crtbegin.c",
