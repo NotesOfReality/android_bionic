@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,24 +25,35 @@
  * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-#ifndef _ARM_MACHINE_CPU_FEATURES_H
-#define _ARM_MACHINE_CPU_FEATURES_H
 
-/* __ARM_ARCH__ is a number corresponding to the ARM revision
- * we're going to support. Our toolchain doesn't define __ARM_ARCH__
- * so try to guess it.
- */
-#ifndef __ARM_ARCH__
-#  if defined __ARM_ARCH_7__   || defined __ARM_ARCH_7A__ || \
-        defined __ARM_ARCH_7R__  || defined __ARM_ARCH_7M__
-#    define __ARM_ARCH__ 7
-#  elif defined __ARM_ARCH_6__   || defined __ARM_ARCH_6J__ || \
-        defined __ARM_ARCH_6K__  || defined __ARM_ARCH_6Z__ || \
-        defined __ARM_ARCH_6KZ__ || defined __ARM_ARCH_6T2__
-#    define __ARM_ARCH__ 6
-#  else
-#    error Unknown or unsupported ARM architecture
-#  endif
-#endif
+#include <stdlib.h>
+#include <xlocale.h>
 
-#endif /* _ARM_MACHINE_CPU_FEATURES_H */
+double strtod_l(const char* s, char** end_ptr, locale_t) {
+  return strtod(s, end_ptr);
+}
+
+float strtof_l(const char* s, char** end_ptr, locale_t) {
+  return strtof(s, end_ptr);
+}
+
+long strtol_l(const char* s, char** end_ptr, int base, locale_t) {
+  return strtol(s, end_ptr, base);
+}
+
+long double strtold_l(const char* s, char** end_ptr, locale_t) {
+  return strtold(s, end_ptr);
+}
+
+long long strtoll_l(const char* s, char** end_ptr, int base, locale_t) {
+  return strtoll(s, end_ptr, base);
+}
+
+unsigned long strtoul_l(const char* s, char** end_ptr, int base, locale_t) {
+  return strtoul(s, end_ptr, base);
+}
+
+unsigned long long strtoull_l(const char* s, char** end_ptr, int base, locale_t) {
+  return strtoull(s, end_ptr, base);
+}
+

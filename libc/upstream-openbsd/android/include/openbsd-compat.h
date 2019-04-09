@@ -22,6 +22,11 @@
 #include <sys/cdefs.h>
 #include <stddef.h> // For size_t.
 
+#define __BEGIN_HIDDEN_DECLS _Pragma("GCC visibility push(hidden)")
+#define __END_HIDDEN_DECLS _Pragma("GCC visibility pop")
+
+extern const char* __progname;
+
 /* Redirect internal C library calls to the public function. */
 #define _err err
 #define _errx errx
@@ -64,6 +69,10 @@
  * Even when it does exist, only the 'shell' user has permissions.
  */
 #define _PATH_TMP "/data/local/tmp/"
+
+/* Use appropriate shell depending on process's executable. */
+__LIBC_HIDDEN__ extern const char* __bionic_get_shell_path();
+#define _PATH_BSHELL __bionic_get_shell_path()
 
 /* We have OpenBSD's getentropy_linux.c, but we don't mention getentropy in any header. */
 __LIBC_HIDDEN__ extern int getentropy(void*, size_t);
