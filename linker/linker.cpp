@@ -3389,6 +3389,7 @@ bool soinfo::link_image(const soinfo_list_t& global_group, const soinfo_list_t& 
         && get_application_target_sdk_version() >= __ANDROID_API_M__) {
 #else
     if (get_application_target_sdk_version() >= __ANDROID_API_M__) {
+#endif
       DL_ERR_AND_LOG("\"%s\" has text relocations (https://android.googlesource.com/platform/"
                      "bionic/+/master/android-changes-for-ndk-developers.md#Text-Relocations-"
                      "Enforced-for-API-level-23)", get_realpath());
