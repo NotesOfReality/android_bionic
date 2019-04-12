@@ -3378,6 +3378,7 @@ bool soinfo::link_image(const soinfo_list_t& global_group, const soinfo_list_t& 
   if (!version_tracker.init(this)) {
     return false;
   }
+}
 
 #if !defined(__LP64__)
   if (has_text_relocations) {
@@ -3662,4 +3663,4 @@ android_namespace_t* get_exported_namespace(const char* name) {
     return nullptr;
   }
   return it->second;
-}
+}}
